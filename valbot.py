@@ -29,16 +29,17 @@ async def on_message(message):
             stats = message.content.split(" ",2)
             username = (stats[1])
             tagline = (stats[2])
-            req = requests.get('https://api.henrikdev.xyz/valorant/v1/mmr/na/' + username + '/' + tagline)
-            data = (req.json())
-            rank = (data['data']['currenttierpatched'])
-            await message.channel.send('your rank is ' + rank)
-
+            output = valapi(username,tagline)
+            await message.channel.send('your rank is ' + output)
 
    
             
-            
-        
+def valapi(username, tagline):   
+    req = requests.get('https://api.henrikdev.xyz/valorant/v1/mmr/na/' + username + '/' + tagline)
+    data = (req.json())
+    rank = (data['data']['currenttierpatched'])
+    return rank;
+    
 
             
           
@@ -47,7 +48,9 @@ async def on_message(message):
 
             
 
-
+# req = requests.get('https://api.henrikdev.xyz/valorant/v1/mmr/na/' + username + '/' + tagline)
+##data = (req.json())
+#rank = (data['data']['currenttierpatched'])
 
 
 
@@ -60,7 +63,7 @@ async def on_message(message):
     
    
 
-client.run('OTA5ODY0MjAwMTA3NTg5Njc1.YZKfEQ.dBfuCV_nSph1Ce9uYx1sZVJAh9k')
+client.run('OTA5ODY0MjAwMTA3NTg5Njc1.YZKfEQ.P1kDKMOLL8UJ6kF1aTD-gA07UJw')
 
 
 
